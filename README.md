@@ -1,6 +1,11 @@
 # explainable-ai-pipeline
 Pipeline for running XAI experiments
 
+Install the required python packages using:
+```
+pip install -r requirements.txt
+```
+
 Example run: 
 - python main.py npy randomforest lime --xtrain=data/dataset_daniel/X_train.npy --ytrain=data/dataset_daniel/y_train.npy --xexplain=data/dataset_daniel/X_explain.npy --yexplain=data/dataset_daniel/y_explain.npy
 
