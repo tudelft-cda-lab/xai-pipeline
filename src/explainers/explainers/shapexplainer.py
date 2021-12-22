@@ -33,12 +33,20 @@ class ShapleyExplainer(ExplainerBase):
     config = configparser.ConfigParser()
     config.read(filedir)
 
-    self.feature_names = config.get("DEFAULT" , "feature_names").split()
-    explainer = shap.Explainer(classifier.predict, X)
+    feature_names = config.get("DEFAULT" , "feature_names").split()
+    explainer = shap.Explainer(classifier.predict, X, feature_names=feature_names)
     self.shap_values = explainer(X)
     
 
   def save_results(self, output_path):
     pickle.dump(self.shap_values, open(os.path.join(output_path, "shapley_explanations.pk"), "wb"))
-    shap.summary_plot(self.shap_values, feature_names=self.feature_names, show=False, plot_size=(10,8))
+
+    for i in range(len(self.shap_values)):
+      shap.plots.force(self.shap_values[i], matplotlib=True, show=False)
+
+      plt.savefig(os.path.join(output_path, f"shap_explanation_{i}.png"))
+      plt.close()
+    
+    shap.summary_plot(self.shap_values, show=False, plot_size=(10,8))
     plt.savefig(os.path.join(output_path, "shap_summary_plot.png"))
+    plt.close()
