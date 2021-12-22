@@ -3,6 +3,7 @@ Factory design pattern for the classifiers
 """
 
 from classifiers.classifiers.randomforest import RandomForest
+from classifiers.classifiers.groot_randomforest import GrootRandomForest
 
 class ClassifierFactory:
   
@@ -12,3 +13,5 @@ class ClassifierFactory:
   def create_classifier(self, classifier):
     if classifier == "randomforest":
       return RandomForest()
+    elif classifier == "grootrandomforest":
+      return GrootRandomForest()

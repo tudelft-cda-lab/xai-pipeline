@@ -33,10 +33,10 @@ class RandomForest(ClassifierBase):
       for param in config[section]:
         value = config[section][param]
         if param == "n_estimators" or param == "max_depth":
-          self.params[param] = int(value) # TODO: is there a more elegant way to do this?
-          # TODO: smash the params into the random forest before training
+          self.params[param] = eval(value)
 
-    self.classifier = RandomForestClassifier() # TODO: give parameters from .ini file
+    self.classifier = RandomForestClassifier()
+    self.classifier.set_params(**self.params)
 
 
   def fit(self, X, y):
