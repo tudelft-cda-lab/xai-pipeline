@@ -19,6 +19,8 @@ from src.parsers.factory import ParserFactory
 from src.classifiers.factory import ClassifierFactory
 from src.explainers.factory import ExplainerFactory
 
+import numpy as np
+
 
 def test_filepaths(args):
   """[Tests the filepaths set by arguments]
@@ -120,6 +122,12 @@ if __name__ == "__main__":
     print("Starting the training of the classifier.")
     classifier.fit(X_train, y_train)
     pickle.dump(classifier, open(os.path.join(output_path, "classifier.pk"), "wb"))
+  
+  if X_test_f and y_test_f:
+    print("Evaluating the classifier.")
+    y_pred = classifier.predict(X_test)
+    accuracy = np.sum(y_pred == y_test) / y_test.shape[0]
+    print(f"Accuracy: {accuracy}")
 
   print("Starting the explanation step.")
   efactory = ExplainerFactory()
