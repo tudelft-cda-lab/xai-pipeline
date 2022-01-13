@@ -26,3 +26,4 @@ slicer==0.0.7
 threadpoolctl==3.0.0
 tifffile==2021.11.2
 tqdm==4.62.3
+eli5==0.11.0

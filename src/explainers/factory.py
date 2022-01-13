@@ -4,6 +4,7 @@ Factory design pattern for the explainers.
 
 from explainers.explainers.limeexplainer import LimeExplainer
 from explainers.explainers.shapexplainer import ShapleyExplainer
+from explainers.explainers.eli5explainer import ELI5Explainer
 
 class ExplainerFactory:
   
@@ -15,3 +16,5 @@ class ExplainerFactory:
       return LimeExplainer()
     elif type == "shap":
       return ShapleyExplainer()
+    elif type == "eli5":
+      return ELI5Explainer()
