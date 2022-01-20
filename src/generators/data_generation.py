@@ -85,6 +85,164 @@ def get_curves(n_samples, ntrain_samples, ntest_samples, nexplain_samples, now_s
         sys.exit()
     return
 
+def get_longblobsX(n_samples, ntrain_samples, ntest_samples, nexplain_samples, now_str=None):
+    nclasses = 2
+    pal = sns.color_palette("hls", nclasses)
+
+    if now_str is not None:
+        std = [0.9, 0.1]#[round(random.uniform(0, 1),2) for x in range(nclasses)]
+        centers1 = [(5, 2), (5, 20)]
+        print('Params, ', std)
+           
+        X, labs = make_blobs(n_samples=n_samples, cluster_std=std, centers=centers1, random_state=42)
+        
+        data = list(zip(X, labs))
+
+        random.shuffle(data)
+
+        # divide into train, test and explain
+        
+        train = data[0:ntrain_samples]
+        test = data[ntrain_samples:]
+        explain = random.choices(test, k=nexplain_samples)
+        x_train, y_train = zip(*train)
+        x_test, y_test = zip(*test)
+        x_explain, y_explain = zip(*explain)
+
+
+        # write this dataset in a file
+        path = 'datasets/blobs/'+now_str
+        if not os.path.exists(path):
+            os.makedirs(path)
+        for n, x, y in [('train', x_train, y_train), ('test', x_test, y_test), ('explain', x_explain, y_explain)]:
+            with open(path+'/longXblobs-X_'+n+'.csv', 'w', newline="") as myfile:
+                wr = csv.writer(myfile)
+                wr.writerows(x)
+            with open(path+'/longXblobs-Y_'+n+'.csv', 'w', newline="") as myfile:
+                wr = csv.writer(myfile)
+                wr.writerow(y)
+
+            # Plot the dataset
+            fig = plt.figure(figsize=(10, 5))
+            plt.title('blobs-longX ' + n)
+            for (_x, _y) in zip(x,y):
+                plt.plot(_x[0], _x[1], marker='o', color=pal[_y])
+                plt.annotate(_y, (_x[0], _x[1]), color=pal[_y])
+            plt.savefig(path+'/raw-data-longXblobs-'+n+'.png')
+            plt.close(fig)
+    else:
+        print('now_str not supplied???')
+        sys.exit()
+
+    return
+    
+def get_longblobsY(n_samples, ntrain_samples, ntest_samples, nexplain_samples, now_str=None):
+    nclasses = 2
+    pal = sns.color_palette("hls", nclasses)
+
+    if now_str is not None:
+        std = [0.9, 0.1]#[round(random.uniform(0, 1),2) for x in range(nclasses)]
+        centers1 = [(2, 5), (10, 5)]
+        print('Params, ', std)
+           
+        X, labs = make_blobs(n_samples=n_samples, cluster_std=std, centers=centers1, random_state=42)
+        
+        data = list(zip(X, labs))
+
+        random.shuffle(data)
+
+        # divide into train, test and explain
+        
+        train = data[0:ntrain_samples]
+        test = data[ntrain_samples:]
+        explain = random.choices(test, k=nexplain_samples)
+        x_train, y_train = zip(*train)
+        x_test, y_test = zip(*test)
+        x_explain, y_explain = zip(*explain)
+
+
+        # write this dataset in a file
+        path = 'datasets/blobs/'+now_str
+        if not os.path.exists(path):
+            os.makedirs(path)
+        for n, x, y in [('train', x_train, y_train), ('test', x_test, y_test), ('explain', x_explain, y_explain)]:
+            with open(path+'/longYblobs-X_'+n+'.csv', 'w', newline="") as myfile:
+                wr = csv.writer(myfile)
+                wr.writerows(x)
+            with open(path+'/longYblobs-Y_'+n+'.csv', 'w', newline="") as myfile:
+                wr = csv.writer(myfile)
+                wr.writerow(y)
+
+            # Plot the dataset
+            fig = plt.figure(figsize=(5, 10))
+            plt.title('blobs-longY ' + n)
+            for (_x, _y) in zip(x,y):
+                plt.plot(_x[0], _x[1], marker='o', color=pal[_y])
+                plt.annotate(_y, (_x[0], _x[1]), color=pal[_y])
+            plt.savefig(path+'/raw-data-longYblobs-'+n+'.png')
+            plt.close(fig)
+    else:
+        print('now_str not supplied???')
+        sys.exit()
+
+    return
+    
+def get_4blobs(n_samples, ntrain_samples, ntest_samples, nexplain_samples, now_str=None):
+    nclasses = 2
+    pal = sns.color_palette("hls", nclasses)
+
+    if now_str is not None:
+        std = [0.4, 0.5] #[round(random.uniform(0, 1),2) for x in range(nclasses)]
+        centers1 = [(2, 5), (2, 15)]
+        centers2 = [(15, 15), (15, 5)]
+        print('Params, ', std)
+           
+        X, labs = make_blobs(n_samples=int(n_samples/2), cluster_std=std, centers=centers1, random_state=42)
+        X2, labs2 = make_blobs(n_samples=int(n_samples/2), cluster_std=std, centers=centers2, random_state=42)
+
+        
+        data = list(zip(X, labs))
+        data.extend(zip(X2, labs2))
+        random.shuffle(data)
+
+        # divide into train, test and explain
+        
+        train = data[0:ntrain_samples]
+        test = data[ntrain_samples:]
+        explain = random.choices(test, k=nexplain_samples)
+        x_train, y_train = zip(*train)
+        x_test, y_test = zip(*test)
+        x_explain, y_explain = zip(*explain)
+
+
+        # write this dataset in a file
+        path = 'datasets/blobs/'+now_str
+        if not os.path.exists(path):
+            os.makedirs(path)
+        for n, x, y in [('train', x_train, y_train), ('test', x_test, y_test), ('explain', x_explain, y_explain)]:
+            with open(path+'/4blobs-X_'+n+'.csv', 'w', newline="") as myfile:
+                wr = csv.writer(myfile)
+                wr.writerows(x)
+            with open(path+'/4blobs-Y_'+n+'.csv', 'w', newline="") as myfile:
+
+                wr = csv.writer(myfile)
+                wr.writerow(y)
+
+            # Plot the dataset
+            fig = plt.figure(figsize=(10,5))
+            plt.title('4blobs ' + n)
+            for (_x, _y) in zip(x,y):
+                plt.plot(_x[0], _x[1], marker='o', color=pal[_y])
+                plt.annotate(_y, (_x[0], _x[1]), color=pal[_y])
+            plt.savefig(path+'/raw-data-4blobs-'+n+'.png')
+            plt.close(fig)
+    else:
+        print('now_str not supplied???')
+        sys.exit()
+
+    return
+
+
 def get_blobs(n_samples, ntrain_samples, ntest_samples, nexplain_samples, now_str=None):
     nclasses = 2
     pal = sns.color_palette("hls", nclasses)

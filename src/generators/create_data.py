@@ -1,11 +1,11 @@
 import sys, os, re, glob, math
 import seaborn as sns
 from datetime import datetime
-from data_generation import get_curves, get_digits, get_blobs, get_circles
+from data_generation import get_curves, get_digits, get_blobs, get_4blobs, get_circles, get_longblobsY, get_longblobsX
 
 
 if len(sys.argv) < 4:
-    print('USAGE: create_data.py {sine-curve|blobs|circles} {#samples} {test-split [0.0-0.9]} {#explain-samples [< test-split*#samples]}')
+    print('USAGE: create_data.py {sine-curve|blobs|4blobs|xblobs|yblobs|circles} {#samples} {test-split [0.0-0.9]} {#explain-samples [< test-split*#samples]}')
     sys.exit()
 
 DATASET = sys.argv[1]
@@ -37,6 +37,12 @@ if DATASET == 'sine-curve':
      get_curves(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
 elif DATASET == 'blobs':
         get_blobs(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
+elif DATASET == '4blobs':
+        get_4blobs(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
+elif DATASET == 'yblobs':
+        get_longblobsY(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
+elif DATASET == 'xblobs':
+        get_longblobsX(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
 elif DATASET == 'circles':
         get_circles(nsamples, ntrain_samples, ntest_samples, nexplain_samples, now_str)
 else:
