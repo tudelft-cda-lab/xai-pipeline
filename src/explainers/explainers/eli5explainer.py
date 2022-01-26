@@ -35,7 +35,7 @@ class ELI5Explainer(ExplainerBase):
     config.read(filedir)
 
     feature_names = config.get("DEFAULT" , "feature_names").split()
-    self.explanation = eli5.explain_weights(classifier.classifier)
+    self.explanation = eli5.explain_weights(classifier.classifier, feature_names=feature_names)
     
 
   def save_results(self, output_path):
