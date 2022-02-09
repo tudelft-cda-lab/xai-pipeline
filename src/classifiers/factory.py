@@ -2,9 +2,6 @@
 Factory design pattern for the classifiers
 """
 
-from classifiers.classifiers.randomforest import RandomForest
-from classifiers.classifiers.groot_randomforest import GrootRandomForest
-
 class ClassifierFactory:
   
   def __init__(self):
@@ -12,6 +9,13 @@ class ClassifierFactory:
   
   def create_classifier(self, classifier):
     if classifier == "randomforest":
+      from classifiers.classifiers.randomforest import RandomForest
       return RandomForest()
     elif classifier == "grootrandomforest":
+      from classifiers.classifiers.grootrandomforest import GrootRandomForest
       return GrootRandomForest()
+    elif classifier == "pgdneuralnetwork":
+      from classifiers.classifiers.pgdneuralnetwork import PgdNeuralNetwork
+      return PgdNeuralNetwork()
+    else:
+      raise Exception("Unknown classifier: " + classifier)

@@ -1,3 +1,4 @@
+adversarial-robustness-toolbox==1.9.1
 cloudpickle==2.0.0
 cycler==0.11.0
 dill==0.3.4
