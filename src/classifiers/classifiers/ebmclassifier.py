@@ -3,21 +3,29 @@ Implementation of an example classifier. Wraps the sklearn RandomForest to
 have a generic interface for own, homegrown classifiers as well. 
 
 Read up configparser here: https://docs.python.org/3/library/configparser.html
+
+Interpret ML: https://github.com/interpretml/interpret
+EBM: https://interpret.ml/docs/ebm.html
 """
 
 from classifierbase import ClassifierBase
 
-from sklearn.ensemble import RandomForestClassifier
+from interpret.glassbox import ExplainableBoostingClassifier
 
 import configparser
 
 
-class RandomForest(ClassifierBase):
+class EBMClassifier(ClassifierBase):
   def __init__(self):
     super().__init__()
 
-    self.classifier = RandomForestClassifier() # TODO: give parameters from .ini file
+    self.classifier = ExplainableBoostingClassifier() # TODO: give parameters from .ini file
 
+  def explain_global(self):
+    return self.classifier.explain_global()
+
+  def explain_local(self, X, y):
+    return self.classifier.explain_local(X, y)
 
   def read_ini(self):
     self.params = dict()
@@ -29,9 +37,9 @@ class RandomForest(ClassifierBase):
     #  raise Exception("Problem reading limeexplainer.ini file in LimeExplainer. Is the file existent?")
 
     try:
-      config.read("../parameters/randomforest.ini")
+      config.read("../parameters/explainableboostingmachine.ini")
     except:
-      raise Exception("Problem reading randomforest.ini file in RandomForest. Is the file existent and clean?")
+      raise Exception("Problem reading explainableboostingmachine.ini file. Is the file existent and clean?")
 
     for section in config:
       for param in config[section]:

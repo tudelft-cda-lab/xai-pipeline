@@ -119,6 +119,7 @@ if __name__ == "__main__":
     classifier = cfactory.create_classifier(args.classifier)
     print("Starting the training of the classifier.")
     classifier.fit(X_train, y_train)
+    classifier.print_wrong_predictions(X_explain, y_explain, output_path)
     pickle.dump(classifier, open(os.path.join(output_path, "classifier.pk"), "wb"))
 
   print("Starting the explanation step.")

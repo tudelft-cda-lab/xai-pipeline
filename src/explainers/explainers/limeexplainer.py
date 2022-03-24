@@ -41,7 +41,11 @@ class LimeExplainer(ExplainerBase):
     #params = config["DEFAULT"]
 
     feature_names = config.get("DEFAULT" , "feature_names").split()
-    categorical_feature_names = config.get("DEFAULT" , "categorical_features").split()
+    try:
+      categorical_feature_names = config.get("DEFAULT" , "categorical_features").split()
+    except: 
+      categorical_feature_names = None
+      print("No categorical feature names provided to limeexplainer. Adjustable in corresponding .ini")
     categorical_feature_indices = [i for i in range(len(feature_names)) if feature_names[i] in categorical_feature_names] # a bit inefficient, but ok for our small arrays
 
     explainer = lime_tabular.LimeTabularExplainer(X, 
