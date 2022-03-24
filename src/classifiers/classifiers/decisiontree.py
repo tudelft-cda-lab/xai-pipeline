@@ -7,16 +7,16 @@ Read up configparser here: https://docs.python.org/3/library/configparser.html
 
 from classifierbase import ClassifierBase
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 import configparser
 
 
-class RandomForest(ClassifierBase):
+class DecisionTree(ClassifierBase):
   def __init__(self):
     super().__init__()
 
-    self.classifier = RandomForestClassifier() # TODO: give parameters from .ini file
+    self.classifier = DecisionTreeClassifier() # TODO: give parameters from .ini file
 
 
   def read_ini(self):
@@ -29,13 +29,13 @@ class RandomForest(ClassifierBase):
     #  raise Exception("Problem reading limeexplainer.ini file in LimeExplainer. Is the file existent?")
 
     try:
-      config.read("../parameters/randomforest.ini")
+      config.read("../parameters/decisiontree.ini")
     except:
       raise Exception("Problem reading randomforest.ini file in RandomForest. Is the file existent and clean?")
 
     for section in config:
       for param in config[section]:
         value = config[section][param]
-        if param == "n_estimators" or param == "max_depth":
+        if param == "max_depth":
           self.params[param] = int(value) # TODO: is there a more elegant way to do this?
           # TODO: smash the params into the random forest before training
