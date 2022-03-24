@@ -26,3 +26,6 @@ slicer==0.0.7
 threadpoolctl==3.0.0
 tifffile==2021.11.2
 tqdm==4.62.3
+interpret==0.2.7
+interpret-core==0.2.7
+treeinterpreter==0.2.3
