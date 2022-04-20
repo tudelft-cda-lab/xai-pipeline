@@ -31,3 +31,4 @@ class ExplainerBase(ABC, object):
     Args:
         output_path ([str]): [Output path]
     """
+    pass
