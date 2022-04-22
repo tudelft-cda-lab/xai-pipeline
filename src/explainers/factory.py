@@ -2,9 +2,9 @@
 Factory design pattern for the explainers.
 """
 
-from explainers.explainers.limeexplainer import LimeExplainer
-from explainers.explainers.shapexplainer import ShapleyExplainer
-from explainers.explainers.explainableboostingexplainer import EBMExplainer
+from src.explainers.explainers.limeexplainer import LimeExplainer
+from src.explainers.explainers.shapexplainer import ShapleyExplainer
+from src.explainers.explainers.explainableboostingexplainer import EBMExplainer
 
 class ExplainerFactory:
   

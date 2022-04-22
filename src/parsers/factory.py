@@ -2,8 +2,8 @@
 Factory design pattern for the parsers.
 """
 
-from parsers.csvparser import CSVParser
-from parsers.numpyparser import NumpyParser
+from src.parsers.parsers.csvparser import CSVParser
+from src.parsers.parsers.numpyparser import NumpyParser
 
 class ParserFactory:
   

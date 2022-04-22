@@ -5,7 +5,7 @@ have a generic interface for own, homegrown classifiers as well.
 Read up configparser here: https://docs.python.org/3/library/configparser.html
 """
 
-from classifierbase import ClassifierBase
+from src.classifiers.classifierbase import ClassifierBase
 
 from sklearn.tree import DecisionTreeClassifier
 

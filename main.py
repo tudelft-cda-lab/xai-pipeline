@@ -6,14 +6,13 @@ import os
 import sys
 
 workdir = os.path.dirname(os.path.realpath(__file__))
-src_path = os.path.join(workdir, 'src')
-sys.path.append(src_path)
-sys.path.append(os.path.join(src_path, 'classifiers'))
-sys.path.append(os.path.join(src_path, 'explainers'))
-sys.path.append(os.path.join(src_path, 'parsers'))
 
 import argparse
 import pickle
+
+import src.classifiers
+import src.explainers
+import src.parsers
 
 from src.parsers.factory import ParserFactory
 from src.classifiers.factory import ClassifierFactory

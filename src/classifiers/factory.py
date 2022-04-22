@@ -2,10 +2,10 @@
 Factory design pattern for the classifiers
 """
 
-from classifiers.classifiers.randomforest import RandomForest
-from classifiers.classifiers.decisiontree import DecisionTree
-from classifiers.classifiers.svm import SupportVectorMachine
-from classifiers.classifiers.ebmclassifier import EBMClassifier
+from src.classifiers.classifiers.randomforest import RandomForest
+from src.classifiers.classifiers.decisiontree import DecisionTree
+from src.classifiers.classifiers.svm import SupportVectorMachine
+from src.classifiers.classifiers.ebmclassifier import EBMClassifier
 
 class ClassifierFactory:
   

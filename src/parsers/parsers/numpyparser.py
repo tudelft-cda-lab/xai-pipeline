@@ -4,7 +4,7 @@ Simple numpy-parser. Takes in the path a .np file and returns the numpy array.
 
 import numpy as np
 
-from parsers.parserbase import ParserBase
+from src.parsers.parserbase import ParserBase
 
 
 class NumpyParser(ParserBase):

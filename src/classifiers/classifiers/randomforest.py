@@ -5,7 +5,7 @@ have a generic interface for own, homegrown classifiers as well.
 Read up configparser here: https://docs.python.org/3/library/configparser.html
 """
 
-from classifierbase import ClassifierBase
+from src.classifiers.classifierbase import ClassifierBase
 
 from sklearn.ensemble import RandomForestClassifier
 
@@ -16,7 +16,7 @@ class RandomForest(ClassifierBase):
   def __init__(self):
     super().__init__()
 
-    self.classifier = RandomForestClassifier() # TODO: give parameters from .ini file
+    self.classifier = RandomForestClassifier(n_estimators=10) # TODO: give parameters from .ini file
 
 
   def read_ini(self):

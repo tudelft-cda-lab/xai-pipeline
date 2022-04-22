@@ -8,7 +8,7 @@ import configparser
 import pickle
 import os
 
-from explainers.explainerbase import ExplainerBase
+from src.explainers.explainerbase import ExplainerBase
 
 class EBMExplainer(ExplainerBase):
   def __init__(self):

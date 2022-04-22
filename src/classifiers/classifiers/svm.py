@@ -2,7 +2,7 @@
 Read up configparser here: https://docs.python.org/3/library/configparser.html
 """
 
-from classifierbase import ClassifierBase
+from src.classifiers.classifierbase import ClassifierBase
 
 from sklearn.svm import SVC, LinearSVC
 

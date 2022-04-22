@@ -8,7 +8,7 @@ Interpret ML: https://github.com/interpretml/interpret
 EBM: https://interpret.ml/docs/ebm.html
 """
 
-from classifierbase import ClassifierBase
+from src.classifiers.classifierbase import ClassifierBase
 
 from interpret.glassbox import ExplainableBoostingClassifier
 

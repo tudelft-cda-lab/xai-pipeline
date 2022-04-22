@@ -9,7 +9,7 @@ import os
 
 import matplotlib.pyplot as plt
 
-from explainers.explainerbase import ExplainerBase
+from src.explainers.explainerbase import ExplainerBase
 
 
 class ShapleyExplainer(ExplainerBase):

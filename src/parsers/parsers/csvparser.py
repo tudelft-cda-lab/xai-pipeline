@@ -4,7 +4,7 @@ The simplest fileparser. Takes in the path a .csv file and returns the opened fi
 
 import pandas as pd
 
-from parsers.parserbase import ParserBase
+from src.parsers.parserbase import ParserBase
 
 
 class CSVParser(ParserBase):
