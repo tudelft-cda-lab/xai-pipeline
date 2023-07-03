@@ -1,5 +1,5 @@
 # Explainable-AI-pipeline
-Pipeline for running XAI experiments (supporting repo for the XAI SoK at `Euro S&P '23`)
+XAI pipeline for explaining tabular data such as blobs and network traffic (supporting repo for the XAI SoK at `Euro S&P '23`)
 
 This is a modular XAI pipeline in Python (since it has in-built support for many popular models and explainers). The pipeline has three components: 
 
