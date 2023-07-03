@@ -1,5 +1,5 @@
-# explainable-ai-pipeline
-Pipeline for running XAI experiments (supporting repo for the XAI SoK at Euro S&P '23)
+# Explainable-AI-pipeline
+Pipeline for running XAI experiments (supporting repo for the XAI SoK at `Euro S&P '23`)
 
 This is a modular XAI pipeline in Python (since it has in-built support for many popular models and explainers). The pipeline has three components: 
 
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```
 
 Example run: 
-- python main.py npy randomforest lime --xtrain=data/dataset_daniel/X_train.npy --ytrain=data/dataset_daniel/y_train.npy --xexplain=data/dataset_daniel/X_explain.npy --yexplain=data/dataset_daniel/y_explain.npy
+- ``` python main.py npy randomforest lime --xtrain=data/dataset_daniel/X_train.npy --ytrain=data/dataset_daniel/y_train.npy --xexplain=data/dataset_daniel/X_explain.npy --yexplain=data/dataset_daniel/y_explain.npy ```
 
 Assumptions: 
 - Input data must be split in train-test- and explain-set and provided to the file.
